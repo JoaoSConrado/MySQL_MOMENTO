@@ -70,10 +70,40 @@ Ele gasta: R$ 41200,00! <code> SELECT SUM(salario) from funcionarios WHERE depar
 Três novos funcionários foram contratados para o departamento de inovações. Por favor, adicione-os: William Ferreira, casado com Inara Ferreira, possui um filho chamado Gabriel que tem 4 anos e adora brincar com cachorros. Ele será programador.Já a Fernanda Lima, que é casada com o Rodrigo, não possui filhos. Ela vai ocupar a posição de desenvolvedora.  Por último, a Gerente do departamento será Fabiana Raulino. Casada, duas filhas (Maya e Laura). 
 O salário de todos eles será a média salarial dos departamentos de administração e finanças. 
 
-<code> </code>
+<h5> Inserção dos Funcionários: </h5>
+<code> INSERT INTO funcionarios (`primeiro_nome`, `sobrenome`, `email`, `telefone`, `dataContratacao`, `ocupacao_id`, `salario`, `departamento_id`) VALUES ('William','Ferreira','WillFerreira01@gmail.com','4002 8923','2022-06-08',(SELECT ocupacao_id from ocupacoes WHERE ocupacao_title LIKE '%Desenvolvedor Web%'),'',(SELECT departamento_id from departamento WHERE departamento_name LIKE '%Inovações%'));</code>
+
+<code> INSERT INTO funcionarios (`primeiro_nome`, `sobrenome`, `email`, `telefone`, `dataContratacao`, `ocupacao_id`, `salario`, `departamento_id`) VALUES ('Fernanda','Lima','FernandaLima02@gmail.com','4002 8924','2022-06-08',(SELECT ocupacao_id from ocupacoes WHERE ocupacao_title LIKE '%Desenvolvedor Web%'),'',(SELECT departamento_id from departamento WHERE departamento_name LIKE '%Inovações%'));</code>
+
+<code> INSERT INTO funcionarios (`primeiro_nome`, `sobrenome`, `email`, `telefone`, `dataContratacao`, `ocupacao_id`, `salario`, `departamento_id`) VALUES ('Fabiana','Raulino','FabiGerente@gmail.com','0800 7777','2022-06-08',(SELECT ocupacao_id from ocupacoes WHERE ocupacao_title LIKE '%Gerente de Marketing%'),'',(SELECT departamento_id from departamento WHERE departamento_name LIKE '%Inovações%')); </code>
 
 ##
+![8a](https://user-images.githubusercontent.com/99970376/172678724-0cd4dec4-43a0-414c-acf5-814cc9b08b48.PNG)
+##
 
+<h5> Inserção dos Salários: </h5>
+<code> UPDATE `funcionarios` SET `salario`=(SELECT ROUND(AVG(salario)) FROM funcionarios WHERE departamento_id = 10 OR departamento_id = 1) WHERE departamento_id = 12
+</code>
+
+##
+![8b](https://user-images.githubusercontent.com/99970376/172679767-e16610f5-02cf-4e69-a248-5af515fb9eec.PNG)
+##
+
+<h5> Inserção dos Dependentes: </h5>
+<code> INSERT INTO `dependentes`(`dependente_id`, `primeiro_nome`, `sobrenome`, `parentesco`, `funcionario_id`) VALUES ('','Inara','Ferreira','Cônjuge',(SELECT funcionario_id from funcionarios WHERE primeiro_nome LIKE '%William%' AND sobrenome LIKE '%Ferreira%')); </code>
+
+<code> INSERT INTO `dependentes`(`dependente_id`, `primeiro_nome`, `sobrenome`, `parentesco`, `funcionario_id`) VALUES ('','Rodrigo','Lima','Cônjuge',(SELECT funcionario_id from funcionarios WHERE primeiro_nome LIKE '%Fernanda%' AND sobrenome LIKE '%Lima%')); </code> 
+
+<code> INSERT INTO `dependentes`(`dependente_id`, `primeiro_nome`, `sobrenome`, `parentesco`, `funcionario_id`) VALUES ('','Zé','Raulino','Cônjuge',(SELECT funcionario_id from funcionarios WHERE primeiro_nome LIKE '%Fabiana%' AND sobrenome LIKE '%Raulino%')); </code>
+  
+<code> INSERT INTO `dependentes`(`dependente_id`, `primeiro_nome`, `sobrenome`, `parentesco`, `funcionario_id`) VALUES ('','Gabriel','Ferreira','Filho(a)',(SELECT funcionario_id from funcionarios WHERE primeiro_nome LIKE '%William%' AND sobrenome LIKE '%Ferreira%')); </code>
+
+<code> INSERT INTO `dependentes`(`dependente_id`, `primeiro_nome`, `sobrenome`, `parentesco`, `funcionario_id`) VALUES ('','Maya','Raulino','Filho(a)',(SELECT funcionario_id from funcionarios WHERE primeiro_nome LIKE '%Fabiana%' AND sobrenome LIKE '%Raulino%')); </code>
+
+<code> INSERT INTO `dependentes`(`dependente_id`, `primeiro_nome`, `sobrenome`, `parentesco`, `funcionario_id`) VALUES ('','Laura','Raulino','Filho(a)',(SELECT funcionario_id from funcionarios WHERE primeiro_nome LIKE '%Fabiana%' AND sobrenome LIKE '%Raulino%')); </code>
+
+##
+![8c](https://user-images.githubusercontent.com/99970376/172684087-d3620752-c74c-444a-b19e-4cd7795e6b3c.PNG)
 ##
 
 <h3> 9 -  Informe todas as regiões em que a empresa atua acompanhadas de seus países. </h3>
