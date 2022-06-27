@@ -110,24 +110,24 @@ O salário de todos eles será a média salarial dos departamentos de administra
 ##
 
 <h3> 9 -  Informe todas as regiões em que a empresa atua acompanhadas de seus países. </h3>
-<code> </code>
+<code> SELECT paises.pais_name AS Pais, regiao.regiao_name FROM paises INNER JOIN regiao WHERE paises.regiao_id = regiao.regiao_id; </code>
 
 ##
-
+![9](https://user-images.githubusercontent.com/99970376/175954757-491a47b5-01e3-4e3c-ba48-63de0654b63b.PNG)
 ##
 
 <h3> 10 -  Joe Sciarra é filho de quem? </h3>
-<code> </code>
+<code> SELECT funcionarios.primeiro_nome, funcionarios.sobrenome FROM dependentes INNER JOIN funcionarios WHERE dependentes.funcionario_id = funcionarios.funcionario_id AND dependentes.primeiro_nome LIKE '%Joe%' AND dependentes. sobrenome LIKE '%Sciarra%' </code>
 
 ##
-
+![10](https://user-images.githubusercontent.com/99970376/175956987-664900a9-2ade-42b6-89d2-e5714e768afc.PNG)
 ##
 
 <h3> 11 -  Jose Manuel possui filhos? </h3>
-<code> </code>
+<code> SELECT funcionarios.primeiro_nome, dependentes.primeiro_nome FROM dependentes INNER JOIN funcionarios WHERE dependentes.funcionario_id = funcionarios.funcionario_id AND dependentes.primeiro_nome LIKE '%Jose%' AND dependentes.sobrenome LIKE '%Manuel%' </code>
 
 ##
-
+![11](https://user-images.githubusercontent.com/99970376/175958490-9c0435eb-5d5a-41dd-a609-17852523dce4.PNG)
 ##
 
 <h3> 12 -  Qual região possui mais países? </h3>
