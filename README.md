@@ -131,10 +131,10 @@ O salário de todos eles será a média salarial dos departamentos de administra
 ##
 
 <h3> 12 -  Qual região possui mais países? </h3>
-<code> </code>
+<code> SELECT regiao.regiao_name, COUNT(paises.regiao_id) FROM paises INNER JOIN regiao WHERE regiao.regiao_id = paises.regiao_id GROUP BY regiao.regiao_name; </code>
 
 ##
-
+![12](https://user-images.githubusercontent.com/99970376/175966181-7dcf41c0-7c11-4dd9-913d-3b18de3862fb.PNG)
 ##
 
 <h3> 13 - Exiba o nome cada funcionário acompanhado de seus dependentes. </h3>
