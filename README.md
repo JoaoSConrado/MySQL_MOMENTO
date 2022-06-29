@@ -137,38 +137,41 @@ O salário de todos eles será a média salarial dos departamentos de administra
 ![12](https://user-images.githubusercontent.com/99970376/175966181-7dcf41c0-7c11-4dd9-913d-3b18de3862fb.PNG)
 ##
 
-<h3> 13 - Exiba o nome cada funcionário acompanhado de seus dependentes. </h3>
-<code> </code>
+<h3> 13 - Exiba o nome de cada funcionário acompanhado de seus dependentes. </h3>
+<code> SELECT funcionarios.primeiro_nome, dependentes.primeiro_nome FROM funcionarios INNER JOIN dependentes WHERE funcionarios.funcionario_id = dependentes.funcionario_id; </code>
 
 ##
-
+![13](https://user-images.githubusercontent.com/99970376/176445616-b3416248-1579-4164-bba5-079b708ab30e.PNG)
 ##
 
 <h3> 14 -  Karen Partners possui um cônjuge? </h3>
-<code> </code>
+<code> SELECT dependentes.primeiro_nome, dependentes.sobrenome FROM dependentes INNER JOIN funcionarios WHERE funcionarios.funcionario_id = dependentes.funcionario_id AND dependentes.funcionario_id = (SELECT funcionario_id FROM funcionarios WHERE primeiro_nome LIKE '%Karen%' AND sobrenome LIKE '%Partners%'); </code>
 
 ##
-
+![14](https://user-images.githubusercontent.com/99970376/176446361-8de574cf-3204-453c-b2da-7ed766f837cc.PNG)
 ##
 
 <h3> 15 -  O ID da tabela de países não segue um padrão numérico. Na sua visão, qual o impacto disso no desenvolvimento do banco? </h3>
-<code> </code>
 
-##
+<h4>R: Nenhum! Como regra para ter uma chave primária é necessário não ser nulo e ter uma identificação única.</h4>
 
 ##
 
 <h3> 16 -  Escolha um país para se mudar. Qual seria esse país? Por que escolheria esse país? E o departamento. O que seria? Como seriam seus funcionários? </h3>
-<code> </code>
 
-##
+<h4>R: Eu gostaria de me mudar para o Estados Unidos! Lá se tem muita inovação/tecnologia, meu departamento é de Desenvolvimento. Os meus funcionários seriam uma das melhores equipes do mundo! </h4>
 
 ##
 
 <h3> 17 -  Atualize as informações na tabela para que seu departamento seja criado. </h3>
-<code> </code>
+
+<code> INSERT INTO `posicao`(`posicao_id`, `endereco`, `cep`, `cidade`, `estado`, `pais_id`) VALUES ('','W 45th St','98101','Nova York','Nova York','US') </code>
+
+<code> INSERT INTO `departamento`(`departamento_id`, `departamento_name`, `posicao_id`) VALUES ('','Desenvolvimento', (SELECT posicao_id FROM posicao WHERE endereco LIKE '%W 45th St%')); </code>
 
 ##
+![17a](https://user-images.githubusercontent.com/99970376/176452435-b670781e-0946-4ffa-b271-fb1edee98344.PNG)
 
+![17b](https://user-images.githubusercontent.com/99970376/176452526-d25d2766-d41a-4b8f-bce2-acd28a2eca8c.PNG)
 ##
 
